@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserConsumer {
 
-    @KafkaListener(topics = "test", groupId = "json-group", containerFactory = "userKafkaListenerFactory")
+    @KafkaListener(topics = "test", containerFactory = "userKafkaListenerFactory")
     public void receiveUser(User user) {
         System.out.println(user);
     }
