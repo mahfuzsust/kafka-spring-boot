@@ -7,7 +7,7 @@ setProperty(){
 
 downloadAndPrepare() {
     DIR="kafka/"
-    if [ -d "$DIR" ]; then
+    if [[ -d "$DIR" ]]; then
         cd kafka
         rm -rf nohup.out
     else
@@ -22,7 +22,7 @@ downloadAndPrepare() {
 stopServer() {
     PIDS=$(ps ax | grep -i 'kafka\.Kafka' | grep java | grep -v grep | awk '{print $1}')
 
-    if [ -z "$PIDS" ]; then
+    if [[ -z "$PIDS" ]]; then
         echo "No kafka server to stop"
     else
         for pid in $PIDS; do kill -9 $pid; done
@@ -30,7 +30,7 @@ stopServer() {
 
     PIDS=$(ps ax | grep java | grep -i QuorumPeerMain | grep -v grep | awk '{print $1}')
 
-    if [ -z "$PIDS" ]; then
+    if [[ -z "$PIDS" ]]; then
         echo "No zookeeper server to stop"
     else
         for pid in $PIDS; do kill -9 $pid; done
@@ -59,7 +59,7 @@ do
    esac
 done
 
-if [ -z "$number" ] || ! [[ "$number" =~ ^[0-9]+$ ]]
+if [[ -z "$number" ]] || ! [[ "$number" =~ ^[0-9]+$ ]]
 then
    helpFunction
 fi
@@ -69,7 +69,7 @@ stopServer
 startServer
 
 counter=1
-while [ $counter -lt $number ]
+while [[ ${counter} -lt ${number} ]]
 do
     cp config/server.properties config/"server-$counter.properties"
 
