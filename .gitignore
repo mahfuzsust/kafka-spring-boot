@@ -31,7 +31,5 @@ build/
 .vscode/
 
 
-kafka/
-
 .DS_Store
 log/
